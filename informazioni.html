@@ -1,108 +1,142 @@
 <html>
 <head>
-    <title>Pannello Amministratore - Gestione Messaggi</title>
+    <title>Sito Informatica con Pannello Admin</title>
 </head>
-<body bgcolor="#F4F6F9" text="#000000">
+<body id="sfondo" bgcolor="#F0FFFF" text="#000000">
 
-    <center>
-        <font size="6" color="darkred"><b>AREA RISERVATA AMMINISTRATORE</b></font>
-        <br>
-        <font size="3"><i>Pannello di controllo per la lettura delle domande dei visitatori</i></font>
-    </center>
-
-    <hr size="3" color="red">
-
-    <!-- SEZIONE LOGIN DI ESEMPIO -->
-    <h2>1. Stato Accesso</h2>
-    <table border="1" bgcolor="#FFF3CD" cellpadding="10" cellspacing="0">
+    <!-- BARRA DI NAVIGAZIONE PER CAMBIARE VISTA -->
+    <table border="1" bgcolor="#FFFFFF" width="100%" cellpadding="8">
         <tr>
-            <td><b>Utente collegato:</b> Admin (Tu)</td>
-            <td><b>Ruolo:</b> Amministratore del sito</td>
-            <td><a href="index.html">Torna al sito pubblico</a></td>
+            <td><b>Modalità di visualizzazione:</b></td>
+            <td align="right">
+                <button onclick="mostraSitoPubblico()">Vedi Sito Pubblico</button>
+                <button onclick="mostraPannelloAdmin()">Accedi come Amministratore</button>
+            </td>
         </tr>
     </table>
 
     <br>
 
-    <!-- SEZIONE STATISTICHE RAPIDE -->
-    <h2>2. Riepilogo Domande</h2>
-    <ul>
-        <li><b>Domande totali ricevute:</b> 4</li>
-        <li><b>Da rispondere:</b> 2</li>
-        <li><b>Risposte inviate:</b> 2</li>
-    </ul>
+    <!-- ========================================== -->
+    <!-- 1. VISTA SITO PUBBLICO (VISIBILE DI DEFAULT) -->
+    <!-- ========================================== -->
+    <div id="sezione-pubblica">
+        <center>
+            <font size="6" color="darkblue"><b>BENVENUTI NEL MIO SITO WEB!</b></font><br>
+            <font size="3"><i>Tutto quello che c'è da sapere sui computer</i></font>
+        </center>
 
-    <hr color="red">
+        <hr size="3" color="blue">
 
-    <!-- TABELLA DELLE DOMANDE RICEVUTE -->
-    <h2>3. Elenco dei Messaggi e delle Domande</h2>
-    <p>Qui sotto trovi tutti i messaggi inviati dai visitatori tramite il form del sito principale:</p>
+        <h2>La mia passione è l'informatica</h2>
+        <p>L'informatica è la scienza che si occupa dell'elaborazione delle informazioni tramite computer.</p>
 
-    <table border="1" bgcolor="#FFFFFF" cellpadding="10" cellspacing="0" width="100%">
-        <tr bgcolor="#DC3545">
-            <th><font color="white">ID</font></th>
-            <th><font color="white">Data</font></th>
-            <th><font color="white">Nome Utente</font></th>
-            <th><font color="white">Email</font></th>
-            <th><font color="white">Messaggio / Domanda</font></th>
-            <th><font color="white">Stato</font></th>
-        </tr>
-        <tr>
-            <td>001</td>
-            <td>10/11/2026</td>
-            <td>Marco Rossi</td>
-            <td>marco@example.com</td>
-            <td>Ciao! Qual è il miglior programma per iniziare a scrivere codice HTML?</td>
-            <td><font color="green"><b>Risposto</b></font></td>
-        </tr>
-        <tr>
-            <td>002</td>
-            <td>11/11/2026</td>
-            <td>Laura Bianchi</td>
-            <td>laura@example.com</td>
-            <td>Come posso inserire un video dentro la mia pagina web?</td>
-            <td><font color="orange"><b>In attesa</b></font></td>
-        </tr>
-        <tr>
-            <td>003</td>
-            <td>11/11/2026</td>
-            <td>Luca Verdi</td>
-            <td>luca@example.com</td>
-            <td>Complimenti per il sito! Aggiungerai anche delle guide sui CSS?</td>
-            <td><font color="orange"><b>In attesa</b></font></td>
-        </tr>
-        <tr>
-            <td>004</td>
-            <td>09/11/2026</td>
-            <td>Giulia Neri</td>
-            <td>giulia@example.com</td>
-            <td>Non riesco a visualizzare le immagini, mi spieghi il tag img?</td>
-            <td><font color="green"><b>Risposto</b></font></td>
-        </tr>
-    </table>
+        <h2>Fai una domanda all'Amministratore</h2>
+        <p>Compila questo modulo per inviare un messaggio al gestore del sito:</p>
 
-    <hr color="red">
+        <form onsubmit="inviaDomanda(event)">
+            <label>Il tuo nome:</label><br>
+            <input type="text" id="campo-nome" required><br><br>
 
-    <!-- FORMA DI RISPOSTA RAPIDA -->
-    <h2>4. Rispondi a un'Email</h2>
-    <p>Seleziona l'ID del messaggio per inviare una risposta al visitatore:</p>
+            <label>La tua email:</label><br>
+            <input type="email" id="campo-email" required><br><br>
 
-    <form>
-        <label>ID Messaggio:</label><br>
-        <input type="text" name="id_messaggio" placeholder="Es. 002"><br><br>
+            <label>La tua domanda:</label><br>
+            <textarea id="campo-messaggio" rows="4" cols="35" required></textarea><br><br>
 
-        <label>Email Destinatario:</label><br>
-        <input type="text" name="email_destinatario" placeholder="laura@example.com"><br><br>
+            <input type="submit" value="Invia Domanda all'Admin">
+        </form>
 
-        <label>La tua risposta:</label><br>
-        <textarea name="risposta" rows="5" cols="40" placeholder="Scrivi qui la tua risposta..."></textarea><br><br>
+        <p id="conferma-invio" style="color: green; font-weight: bold; display: none;">
+            Messaggio inviato con successo! Ora è visibile nel pannello Amministratore.
+        </p>
+    </div>
 
-        <input type="submit" value="Invia Risposta">
-    </form>
+    <!-- ========================================== -->
+    <!-- 2. VISTA PANNELLO ADMIN (NASCOSTA ALL'INIZIO) -->
+    <!-- ========================================== -->
+    <div id="sezione-admin" style="display: none;">
+        <center>
+            <font size="6" color="darkred"><b>AREA RISERVATA AMMINISTRATORE</b></font><br>
+            <font size="3"><i>Pannello per leggere le domande inviate dai visitatori</i></font>
+        </center>
 
-    <br><hr color="red">
+        <hr size="3" color="red">
 
-    <p align="center"><b>Pannello Amministratore v1.0</b> - Riservato solo ai gestori del sito</p>
+        <h2>Elenco Domande Ricevute</h2>
+
+        <table border="1" bgcolor="#FFFFFF" cellpadding="8" cellspacing="0" width="100%">
+            <thead>
+                <tr bgcolor="#DC3545">
+                    <th><font color="white">Data</font></th>
+                    <th><font color="white">Nome</font></th>
+                    <th><font color="white">Email</font></th>
+                    <th><font color="white">Messaggio</font></th>
+                    <th><font color="white">Stato</font></th>
+                </tr>
+            </thead>
+            <tbody id="tabella-domande">
+                <!-- Esempio di domanda già presente -->
+                <tr>
+                    <td>11/11/2026</td>
+                    <td>Marco Rossi</td>
+                    <td>marco@example.com</td>
+                    <td>Qual è il miglior programma per iniziare a programmare?</td>
+                    <td><font color="green"><b>Risposto</b></font></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SCRIPT JAVASCRIPT (PER L'AUTOMATISMO)       -->
+    <!-- ========================================== -->
+    <script>
+        // Funzione per inviare la domanda in automatico alla tabella Admin
+        function inviaDomanda(evento) {
+            // Blocca il ricaricamento della pagina
+            evento.preventDefault();
+
+            // 1. Prende i dati scritti dall'utente
+            var nome = document.getElementById("campo-nome").value;
+            var email = document.getElementById("campo-email").value;
+            var messaggio = document.getElementById("campo-messaggio").value;
+
+            // 2. Prende la data di oggi
+            var oggi = new Date();
+            var dataFormattata = oggi.getDate() + "/" + (oggi.getMonth() + 1) + "/" + oggi.getFullYear();
+
+            // 3. Crea una nuova riga da inserire nella tabella dell'Admin
+            var tabella = document.getElementById("tabella-domande");
+            var nuovaRiga = tabella.insertRow();
+
+            nuovaRiga.innerHTML = "<td>" + dataFormattata + "</td>" +
+                                  "<td>" + nome + "</td>" +
+                                  "<td>" + email + "</td>" +
+                                  "<td>" + messaggio + "</td>" +
+                                  "<td><font color='orange'><b>In attesa</b></font></td>";
+
+            // 4. Pulisce i campi di testo e mostra la conferma
+            document.getElementById("campo-nome").value = "";
+            document.getElementById("campo-email").value = "";
+            document.getElementById("campo-messaggio").value = "";
+            document.getElementById("conferma-invio").style.display = "block";
+        }
+
+        // Funzione per passare alla vista Amministratore
+        function mostraPannelloAdmin() {
+            document.getElementById("sezione-pubblica").style.display = "none";
+            document.getElementById("sezione-admin").style.display = "block";
+            document.getElementById("sfondo").bgcolor = "#F4F6F9";
+        }
+
+        // Funzione per tornare al Sito Pubblico
+        function mostraSitoPubblico() {
+            document.getElementById("sezione-admin").style.display = "none";
+            document.getElementById("sezione-pubblica").style.display = "block";
+            document.getElementById("sfondo").bgcolor = "#F0FFFF";
+        }
+    </script>
 
 </body>
 </html>
