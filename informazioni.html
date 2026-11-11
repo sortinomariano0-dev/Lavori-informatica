@@ -1,0 +1,108 @@
+<html>
+<head>
+    <title>Pannello Amministratore - Gestione Messaggi</title>
+</head>
+<body bgcolor="#F4F6F9" text="#000000">
+
+    <center>
+        <font size="6" color="darkred"><b>AREA RISERVATA AMMINISTRATORE</b></font>
+        <br>
+        <font size="3"><i>Pannello di controllo per la lettura delle domande dei visitatori</i></font>
+    </center>
+
+    <hr size="3" color="red">
+
+    <!-- SEZIONE LOGIN DI ESEMPIO -->
+    <h2>1. Stato Accesso</h2>
+    <table border="1" bgcolor="#FFF3CD" cellpadding="10" cellspacing="0">
+        <tr>
+            <td><b>Utente collegato:</b> Admin (Tu)</td>
+            <td><b>Ruolo:</b> Amministratore del sito</td>
+            <td><a href="index.html">Torna al sito pubblico</a></td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!-- SEZIONE STATISTICHE RAPIDE -->
+    <h2>2. Riepilogo Domande</h2>
+    <ul>
+        <li><b>Domande totali ricevute:</b> 4</li>
+        <li><b>Da rispondere:</b> 2</li>
+        <li><b>Risposte inviate:</b> 2</li>
+    </ul>
+
+    <hr color="red">
+
+    <!-- TABELLA DELLE DOMANDE RICEVUTE -->
+    <h2>3. Elenco dei Messaggi e delle Domande</h2>
+    <p>Qui sotto trovi tutti i messaggi inviati dai visitatori tramite il form del sito principale:</p>
+
+    <table border="1" bgcolor="#FFFFFF" cellpadding="10" cellspacing="0" width="100%">
+        <tr bgcolor="#DC3545">
+            <th><font color="white">ID</font></th>
+            <th><font color="white">Data</font></th>
+            <th><font color="white">Nome Utente</font></th>
+            <th><font color="white">Email</font></th>
+            <th><font color="white">Messaggio / Domanda</font></th>
+            <th><font color="white">Stato</font></th>
+        </tr>
+        <tr>
+            <td>001</td>
+            <td>10/11/2026</td>
+            <td>Marco Rossi</td>
+            <td>marco@example.com</td>
+            <td>Ciao! Qual è il miglior programma per iniziare a scrivere codice HTML?</td>
+            <td><font color="green"><b>Risposto</b></font></td>
+        </tr>
+        <tr>
+            <td>002</td>
+            <td>11/11/2026</td>
+            <td>Laura Bianchi</td>
+            <td>laura@example.com</td>
+            <td>Come posso inserire un video dentro la mia pagina web?</td>
+            <td><font color="orange"><b>In attesa</b></font></td>
+        </tr>
+        <tr>
+            <td>003</td>
+            <td>11/11/2026</td>
+            <td>Luca Verdi</td>
+            <td>luca@example.com</td>
+            <td>Complimenti per il sito! Aggiungerai anche delle guide sui CSS?</td>
+            <td><font color="orange"><b>In attesa</b></font></td>
+        </tr>
+        <tr>
+            <td>004</td>
+            <td>09/11/2026</td>
+            <td>Giulia Neri</td>
+            <td>giulia@example.com</td>
+            <td>Non riesco a visualizzare le immagini, mi spieghi il tag img?</td>
+            <td><font color="green"><b>Risposto</b></font></td>
+        </tr>
+    </table>
+
+    <hr color="red">
+
+    <!-- FORMA DI RISPOSTA RAPIDA -->
+    <h2>4. Rispondi a un'Email</h2>
+    <p>Seleziona l'ID del messaggio per inviare una risposta al visitatore:</p>
+
+    <form>
+        <label>ID Messaggio:</label><br>
+        <input type="text" name="id_messaggio" placeholder="Es. 002"><br><br>
+
+        <label>Email Destinatario:</label><br>
+        <input type="text" name="email_destinatario" placeholder="laura@example.com"><br><br>
+
+        <label>La tua risposta:</label><br>
+        <textarea name="risposta" rows="5" cols="40" placeholder="Scrivi qui la tua risposta..."></textarea><br><br>
+
+        <input type="submit" value="Invia Risposta">
+    </form>
+
+    <br><hr color="red">
+
+    <p align="center"><b>Pannello Amministratore v1.0</b> - Riservato solo ai gestori del sito</p>
+
+</body>
+</html>
